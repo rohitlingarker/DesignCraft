@@ -36,8 +36,9 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get( '/textgen' , function( req , res ) {
-   res.send(generateContent());
+router.get( '/textgen' , async function( req , res ) {
+  const generatedContent = await generateContent();
+   res.render("./themes/01.ejs",generatedContent);
 } );
 
 

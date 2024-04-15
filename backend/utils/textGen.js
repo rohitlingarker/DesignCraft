@@ -1,14 +1,19 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const glm = require("@google/generative-ai")
+const { GoogleGenerativeAI,FunctionDeclarationSchemaType ,FunctionDeclarationsTool} = require("@google/generative-ai");
 require("dotenv").config();
-
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI(process.env.GENAI_API_KEY);
+
+
+
 const userPrompt = "A food ordering website"
 
 async function generateContent() {
   // For text-only input, use the gemini-pro model
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
   
+
 
   const prompt = `Please return JSON response for a place holders in a website description given using the following schema. The description of placeholders is given beside them:
 
@@ -41,7 +46,16 @@ async function generateContent() {
 
   All fields are required and in string format.
 
-  Important: Only return a single piece of valid parsable JSON text.
+  example output:
+  {
+    pageTitle: "Welcome to our Gallery!",
+    navbarLink1: "Home",
+    navbarLink2: "About Us",
+    ...
+    finalImage:"beautiful image of a city top view"
+  }
+
+  Important: Only return a single piece of valid parsable JSON text. Strictly start response  with '{' or '{[' and end it with }
 
   here is the website description
 
@@ -50,10 +64,10 @@ async function generateContent() {
   const result = await model.generateContent(prompt);
   const response = result.response;
   const text = response.text();
-  // const parsedText = JSON.parse(text);
-  console.log(text);
-  return text
+  const parsedText = JSON.parse(text);
+  console.log(parsedText);
+  return parsedText
 }
-
+// 
 // generateContent();
 module.exports= generateContent;
