@@ -1,6 +1,7 @@
 // Import required modules
 const express = require('express');
 const path = require('path');
+const generateContent = require('./utils/textGen')
 
 // Create a new router instance
 const router = express.Router();
@@ -32,12 +33,13 @@ router.get('/', (req, res) => {
     galleryImage2 :"galleryImage2 ",
     galleryImage3 :"galleryImage3 ",
     finalImage :"finalImage "
-    
-
-
   })
 });
 
+router.get( '/textgen' , async function( req , res ) {
+  const generatedContent = await generateContent();
+   res.render("./themes/01.ejs",generatedContent);
+} );
 
 
 
