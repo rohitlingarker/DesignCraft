@@ -1,21 +1,23 @@
-const glm = require("@google/generative-ai")
-const { GoogleGenerativeAI,FunctionDeclarationSchemaType ,FunctionDeclarationsTool} = require("@google/generative-ai");
+const glm = require("@google/generative-ai");
+const {
+  GoogleGenerativeAI,
+  FunctionDeclarationSchemaType,
+  FunctionDeclarationsTool,
+} = require("@google/generative-ai");
 require("dotenv").config();
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI(process.env.GENAI_API_KEY);
 
-
-
-const userPrompt = "A food ordering website"
-
-async function generateContent() {
+async function generateContent(userPrompt) {
   // For text-only input, use the gemini-pro model
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-  
-
-
-  const prompt = `Please return JSON response for a place holders in a website description given using the following schema. The description of placeholders is given beside them:
+  let gotJson = false;
+  let parsedText ;
+  while (!gotJson) {
+    try {
+      const prompt =
+        `Please return JSON response for a place holders in a website description given using the following schema. The description of placeholders is given beside them:
 
   {
     pageTitle:  "Short Title of the page which is seen on the tab",
@@ -59,15 +61,20 @@ async function generateContent() {
 
   here is the website description
 
-  ` + userPrompt
+  ` + userPrompt;
 
-  const result = await model.generateContent(prompt);
-  const response = result.response;
-  const text = response.text();
-  const parsedText = JSON.parse(text);
+      const result = await model.generateContent(prompt);
+      const response = result.response;
+      var text = response.text();
+      parsedText = JSON.parse(text);
+      gotJson = true;
+    } catch (err) {
+      console.log(err, text);
+    }
+  }
   console.log(parsedText);
-  return parsedText
+  return parsedText;
 }
-// 
+//
 // generateContent();
-module.exports= generateContent;
+module.exports = generateContent;
