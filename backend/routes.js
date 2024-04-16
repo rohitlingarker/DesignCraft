@@ -43,9 +43,9 @@ router.get('/', (req, res) => {
 });
 
 const generateImages = async (generatedContent)=>{
-  await picGenerator("carouselImage1",generatedContent.carouselImage1GenPrompt,"600x300");
-  await picGenerator("carouselImage2",generatedContent.carouselImage2GenPrompt,"600x300");
-  await picGenerator("carouselImage3",generatedContent.carouselImage3GenPrompt,"600x300");
+  await picGenerator("carouselImage1",generatedContent.carouselImage1GenPrompt,"768x480");
+  await picGenerator("carouselImage2",generatedContent.carouselImage2GenPrompt,"768x480");
+  await picGenerator("carouselImage3",generatedContent.carouselImage3GenPrompt,"768x480");
   await picGenerator("galleryImage1",generatedContent.galleryImage1GenPrompt,"255x255");
   await picGenerator("galleryImage2",generatedContent.galleryImage2GenPrompt,"255x255");
   await picGenerator("galleryImage3",generatedContent.galleryImage3GenPrompt,"255x255");

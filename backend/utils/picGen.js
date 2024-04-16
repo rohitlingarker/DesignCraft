@@ -17,7 +17,7 @@ const mainPyPath = path.join(__dirname, "../perchance-image-generator/main.py");
 
 const picGenerator = async (fileName, prompt, resolution) => {
   try {
-    const command = `python ${mainPyPath} -f ${fileName} -p "${prompt}" -r ${resolution} -st cinematic`;
+    const command = `python ${mainPyPath} -f ${fileName} -p "${prompt}" -r ${resolution} -st website-image`;
     const { stdout, stderr } = await execAsync(command);
     if (stderr) {
       console.error(`Error executing main.py: ${stderr}`);
