@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - main
-  
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./backend
 
 jobs:
+  
   validate-code:
     name: Code validation
     runs-on: ubuntu-latest
