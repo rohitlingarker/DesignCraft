@@ -14,32 +14,11 @@ const router = express.Router();
 
 // Define route handlers
 router.get('/', (req, res) => {
-  res.render("./themes/01.ejs",{
-    pageTitle:"hom e page",
-    navbarLink1:"Home",
-    navbarLink2:"Home",
-    navbarLink3:"Home",
-    navbarLink4:"Home",
-    carouselImage1: "carouselImage1",
-    carouselImage2: "carouselImage2",
-    carouselImage3: "carouselImage3",
-    carouselImageTitle1 : "carouselImageTitle1",
-    carouselImageTitle2 : "carouselImageTitle2",
-    carouselImageTitle3 : "carouselImageTitle3",
-    carouselImageDescription1 :"carouselImageDescription1 ",
-    carouselImageDescription2 :"carouselImageDescription2 ",
-    carouselImageDescription3 :"carouselImageDescription3 ",
-    mainTitle :"mainTitle ",
-    subTitle :"subTitle ",
-    mainContent :"mainContent ",
-    galleryImageTitle1:"galleryImageTitle1",
-    galleryImageTitle2:"galleryImageTitle2",
-    galleryImageTitle3:"galleryImageTitle3",
-    galleryImage1 :"galleryImage1 ",
-    galleryImage2 :"galleryImage2 ",
-    galleryImage3 :"galleryImage3 ",
-    finalImage :"finalImage "
-  })
+  if (req.session.content) {
+  res.render("./themes/01.ejs",req.session.content)
+  }else{
+    res.send("frontnd gen api")
+  }
 });
 
 const generateImages = async (generatedContent)=>{
@@ -61,7 +40,6 @@ router.get( '/textgen/:userPrompt' , async function( req , res ) {
 
 router.get('/download', (req, res) => {
   // Render the EJS template
-  console.log(req.session.content);
   ejs.renderFile(path.join(__dirname, 'views','themes','01.ejs'), req.session.content, (err, html) => {
       if (err) {
           console.error('Error rendering EJS:', err);
@@ -69,26 +47,32 @@ router.get('/download', (req, res) => {
           return;
       }
 
-      // Create a zip file
-      const zip = new AdmZip();
-      zip.addFile('index.html', Buffer.alloc(html.length, html), 'Generated HTML');
+      try {
+          // Create a zip file
+          const zip = new AdmZip();
+          zip.addFile('index.html', Buffer.alloc(html.length, html), 'Generated HTML');
 
-      // Add images to the zip file
-      const imageDir = path.join(__dirname, 'public', 'images');
-      const imageFiles = fs.readdirSync(imageDir);
-      imageFiles.forEach((file) => {
-          zip.addLocalFile(path.join(imageDir, file), 'images');
-      });
+          // Add images to the zip file
+          const imageDir = path.join(__dirname, 'public', 'images');
+          const imageFiles = fs.readdirSync(imageDir);
+          imageFiles.forEach((file) => {
+              zip.addLocalFile(path.join(imageDir, file), 'images');
+          });
 
-      // Send the zip file to the client
-      const zipName = 'download.zip';
-      const zipData = zip.toBuffer();
-      res.set('Content-Disposition', `attachment; filename="${zipName}"`);
-      res.set('Content-Type', 'application/zip');
-      res.set('Content-Length', zipData.length);
-      res.send(zipData);
+          // Send the zip file to the client
+          const zipName = 'download.zip';
+          const zipData = zip.toBuffer();
+          res.set('Content-Disposition', `attachment; filename="${zipName}"`);
+          res.set('Content-Type', 'application/zip');
+          res.set('Content-Length', zipData.length);
+          res.send(zipData);
+      } catch (zipError) {
+          console.error('Error creating zip file:', zipError);
+          res.status(500).send('Internal Server Error');
+      }
   });
 });
+
 
 
 
