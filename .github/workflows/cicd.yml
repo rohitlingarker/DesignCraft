@@ -40,7 +40,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    needs: validate-code
+    needs: []
     defaults:
       run:
         working-directory: backend
