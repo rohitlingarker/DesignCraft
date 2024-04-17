@@ -72,7 +72,7 @@ jobs:
           password : ${{ secrets.PASSWORD }}
           port: 22
           script: |
-            cd www/todo-application
+            cd www/DesignCraft
             echo "Current directory: $(pwd)"
             git pull origin master
             git status
