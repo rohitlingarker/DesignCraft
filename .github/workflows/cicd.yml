@@ -76,6 +76,7 @@ jobs:
             echo "Current directory: $(pwd)"
             git pull origin master
             git status
+            cd backend
             npm install --only=prod || exit 1  
 
       - name: Notify on failure
