@@ -52,7 +52,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name : Install python dependencies
-        run:  cd perchance-image-generator  && pip install -r requirements.txt
+        run:  cd perchance-image-generator  && pip install -r requirements.txt && pip install pytest.playwright && playwright install
       - name: Run tests
         run: |
           npm test
