@@ -1,8 +1,6 @@
-const glm = require("@google/generative-ai");
+
 const {
   GoogleGenerativeAI,
-  FunctionDeclarationSchemaType,
-  FunctionDeclarationsTool,
 } = require("@google/generative-ai");
 require("dotenv").config();
 // Access your API key as an environment variable (see "Set up your API key" above)

@@ -4,7 +4,6 @@ const path = require('path');
 const ejs = require("ejs")
 const generateContent = require('./utils/textGen')
 const picGenerator = require('./utils/picGen')
-const session = require('express-session');
 const AdmZip = require('adm-zip')
 const fs = require('fs')
 
