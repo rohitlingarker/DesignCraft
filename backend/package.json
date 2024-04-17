@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "d": "nodemon index.js -e js,ejs",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "lint": "eslint ."
   },
   "jest": {

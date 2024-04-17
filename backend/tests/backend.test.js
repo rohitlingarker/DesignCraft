@@ -5,7 +5,7 @@ const path = require('path');
 const { promisify } = require('util');
 const {rimraf} = require('rimraf');
 
-const app = require('../index');
+const {app,server} = require('../index');
 
 describe('File System Interaction', () => {
   // Clean up generated images directory before running tests
@@ -13,6 +13,14 @@ describe('File System Interaction', () => {
     const imagesDir = path.join(__dirname, '../public/images/');
     await rimraf(imagesDir);
   });
+
+  afterAll(async ()=>{
+    try {
+      await server.close();
+    } catch (error) {
+      console.log(error);
+    }
+  })
 
   // Test image generation
   describe('Image Generation', () => {
