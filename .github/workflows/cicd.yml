@@ -74,7 +74,7 @@ jobs:
           script: |
             cd www/DesignCraft
             echo "Current directory: $(pwd)"
-            git pull origin master
+            git pull origin main
             git status
             cd backend
             npm install --only=prod || exit 1  
