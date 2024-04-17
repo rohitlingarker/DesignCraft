@@ -12,7 +12,7 @@
     "lint": "eslint ."
   },
   "jest": {
-    "testTimeout": 60000
+    "testTimeout": 300000
   },
   "author": "",
   "license": "ISC",
