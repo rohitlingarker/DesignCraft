@@ -5,7 +5,10 @@ on:
     branches:
       - main
 
-
+defaults:
+  run:
+    shell: bash
+    working-directory: ../backend
 
 jobs:
   
@@ -15,8 +18,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          path: "backend"
+        
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
