@@ -34,7 +34,7 @@ router.get( '/textgen/:userPrompt' , async function( req , res ) {
   const generatedContent = await generateContent(req.params.userPrompt);
   await generateImages(generatedContent);
   req.session.content=generatedContent;
-   res.render("./themes/01.ejs",generatedContent);
+  res.render("./themes/01.ejs",generatedContent);
 } );
 
 router.get('/download', (req, res) => {
