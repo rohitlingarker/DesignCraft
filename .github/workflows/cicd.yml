@@ -5,10 +5,7 @@ on:
     branches:
       - main
 
-defaults:
-  run:
-    shell: bash
-    working-directory: backend
+
 
 jobs:
   
