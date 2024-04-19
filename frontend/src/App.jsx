@@ -5,7 +5,7 @@ import { API_ENDPOINT } from "../config/constants";
 function App() {
   // const history = useHistory();
 
-  const [userPrompt, setUserPrompt] = useState("food ordering website");
+  const [userPrompt, setUserPrompt] = useState("");
   const [renderedEJS, setRenderedEJS] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);

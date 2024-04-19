@@ -27,7 +27,7 @@ const generateImages = async (generatedContent)=>{
   await picGenerator("galleryImage1",generatedContent.galleryImage1GenPrompt,"255x255");
   await picGenerator("galleryImage2",generatedContent.galleryImage2GenPrompt,"255x255");
   await picGenerator("galleryImage3",generatedContent.galleryImage3GenPrompt,"255x255");
-  await picGenerator("finalImage",generatedContent.finalImage,"600x300")
+  await picGenerator("finalImage",generatedContent.finalImage,"768x512")
 }
 
 router.get( '/textgen/:userPrompt' , async function( req , res ) {
@@ -71,10 +71,5 @@ router.get('/download', (req, res) => {
       }
   });
 });
-
-
-
-
-
 // Export the router
 module.exports = router;
