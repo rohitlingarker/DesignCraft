@@ -1,4 +1,6 @@
 from logging_settings import network_logger, info_logger
+import os
+os.environ['PATH'] += ':/opt/render/.local/bin'
 from playwright.async_api import async_playwright
 import requests
 import re
