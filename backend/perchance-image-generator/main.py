@@ -1,3 +1,5 @@
+import os
+os.environ['PATH'] += ':/opt/render/.local/bin'
 import argparse
 import re
 from generator import image_generator
