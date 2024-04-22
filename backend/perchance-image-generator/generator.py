@@ -98,7 +98,7 @@ def image_generator(
         with open(filename, 'wb') as file:
             file.write(download_response.content)
 
-        info_logger.info(f'Created picture {idx}/{amount} ({filename=})')
+        info_logger.info(f'Created picture {idx}/{amount} (filename={filename})')
         yield {
             'filename': filename,
             'prompt': prompt_base,
