@@ -1,0 +1,12 @@
+{
+    "translation": {
+      "prompt": "Web サイトを生成するためのプロンプトを入力します。",
+      "Download": "ダウンロード",
+      "Previewsite": "プレビューサイト",
+      "Submit": "ウェブサイトの生成",
+      "subtitle": "テキストと画像を使用して素晴らしい Web サイトを作成し、利用可能なさまざまなテンプレートから選択します",
+      "promptplaceholder": "例: プログラミング言語を学習するための Web サイト。",
+      "promptlabel": "Web サイトを生成するためのプロンプトを入力します。",
+      "Language": "言語"
+    }
+  }

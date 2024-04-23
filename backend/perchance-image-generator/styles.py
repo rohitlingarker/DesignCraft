@@ -7,7 +7,7 @@ styles = {
     ),
 
     'website-image':(
-        "fine details, balanced highlights and shadows, professional composition, subtle gradients, proper focus, minimal artifacts, high-quality textures,high resolution, consistent illumination,  authentic textures, defined facial landmarks, accurate shadows, lifelike appearance, well-aligned features,crisp picture, bright lighting,high res, realistic, realism, sharp focus, fine details , depth of field ",
+        " bright lighting,high res, realistic, realism, sharp focus, fine details , depth of field ",
         "compression artifacts, unrealistic colors, flat lighting, unnatural poses, over-saturation, lack of depth, visible seams, inconsistent skin texture, unnatural facial expressions,low resolution, harsh shadows, overexposure, underexposure, distorted proportions, excessive noise, unnatural lighting, inconsistent contrast, skewed perspective,blurry images, distorted faces, white color background in bottom of image, white foreground in bottom of image,poor lighting, boring, logo, brands text, text,low-quality, deformed, text, poorly drawn, holding camera, bad art, bad angle, boring, low-resolution, worst quality, bad composition, disfigured "
     ),
     'toonish':(

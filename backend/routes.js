@@ -59,7 +59,7 @@ router.get('/download', (req, res) => {
           });
 
           // Send the zip file to the client
-          const zipName = 'download.zip';
+          const zipName = 'downloaded_from_designcraft.zip';
           const zipData = zip.toBuffer();
           res.set('Content-Disposition', `attachment; filename="${zipName}"`);
           res.set('Content-Type', 'application/zip');

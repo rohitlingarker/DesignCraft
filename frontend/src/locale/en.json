@@ -1,0 +1,12 @@
+{
+    "translation":{
+        "prompt":"Enter prompt for generating your website:",
+        "Download":"Download",
+        "Previewsite":"Preview site",
+        "Submit":"Generate Website",
+        "subtitle":"Craft Stunning Websites with text and pictures and choose from diiferent available templates",
+        "promptplaceholder":"ex: A website for learning programming languages.",
+        "promptlabel":"Enter prompt for generating your website:",
+        "Language":"Language"
+    }
+}

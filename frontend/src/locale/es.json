@@ -1,0 +1,12 @@
+{
+    "translation": {
+      "prompt": "Eingabeaufforderung zum Generieren Ihrer Website:",
+      "Download": "Herunterladen",
+      "Previewsite": "Vorschauseite",
+      "Submit": "Website generieren",
+      "subtitle": "Erstellen Sie atemberaubende Websites mit Text und Bildern und wählen Sie aus verschiedenen verfügbaren Vorlagen",
+      "promptplaceholder": "Beispiel: Eine Website zum Erlernen von Programmiersprachen.",
+      "promptlabel": "Eingabeaufforderung zum Generieren Ihrer Website:",
+      "Language": "Sprache"
+    }
+  }

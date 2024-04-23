@@ -1,9 +1,16 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useEffect, useState, useTitle } from "react";
 import { API_ENDPOINT } from "../config/constants";
 // import { useHistory } from 'react-dom/client';
+import "./i18n"
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "./components/LanguageSelector";
+
 
 function App() {
   // const history = useHistory();
+  const { t } = useTranslation();
+
 
   const [userPrompt, setUserPrompt] = useState("");
   const [renderedEJS, setRenderedEJS] = useState("");
@@ -30,23 +37,33 @@ function App() {
     const value = e.target.value;
     setUserPrompt(value);
   }
+
+
+
+
+
+
+  
   //   function download(){
   // history.push('https://example.com');
   //   }
 
   return (
     <>
-      <h1 className="text-center text-5xl font-semibold my-11 ">Design Craft</h1>
-      <div className="container w-1/3 h-52 bg-slate-500 mx-auto rounded-lg">
-        <form className="flex flex-col">
+      <h1 className="text-center text-5xl font-semibold py-11 mb-2 bg-stone-600 text-gray-300 font-serif">Design Craft<p className="text-xl mt-2 text-gray-400 font-sans">{t('subtitle')}</p></h1>
+      <LanguageSelector/>
+      <div className="container w-1/3 h-64 bg-stone-800 mx-auto rounded-lg">
+        <form className="flex flex-col pt-5">
+           <label htmlFor="prompt" className="mb-2 text-center text-gray-300">{t('promptlabel')}</label>
           <input
             className="w-3/4 self-center my-4 p-2 rounded-md"
             type="text"
-            placeholder="ex: A website for  learning programming languages."
+            id="prompt"
+            placeholder={t("promptplaceholder")}
             value={userPrompt}
             onChange={(e) => handleInputChange(e)}
           />
-          <button onClick={(e) => handleSubmit(e)} className="bg-lime-600 w-32 px-2 py-1 mx-auto mb-5">Submit</button>
+          <button onClick={(e) => handleSubmit(e)} className="bg-lime-600 w-auto px-2 py-1 mx-auto mb-5">{t('Submit')}</button>
           {
             loading && 
             <div className="w-full flex justify-center">
@@ -65,13 +82,13 @@ function App() {
             <a 
             className="bg-cyan-300 w-32 px-2 py-1 mx-auto text-center" 
             href={API_ENDPOINT} target="_blank">
-              Preview site
+              {t('Previewsite')}
             </a>
             <a
               className="bg-lime-600 w-32 px-2 py-1 mx-auto mt-2 text-center"
               href={`${API_ENDPOINT}/download`}
               >
-              Download
+              {t('Download')}
             </a>
           </div>
             }
