@@ -13,6 +13,7 @@ const router = express.Router();
 
 // Define route handlers
 router.get('/', (req, res) => {
+  console.log(req.session);
   if (req.session.content) {
   res.render("./themes/01.ejs",req.session.content)
   }else{
@@ -32,9 +33,11 @@ const generateImages = async (generatedContent)=>{
 
 router.get( '/textgen/:userPrompt' , async function( req , res ) {
   const generatedContent = await generateContent(req.params.userPrompt);
-  await generateImages(generatedContent);
   req.session.content=generatedContent;
+  console.log("req.session.content", req.session );
+  await generateImages(generatedContent);
   res.render("./themes/01.ejs",generatedContent);
+  // res.json({"status":"success","data":generatedContent})
 } );
 
 router.get('/download', (req, res) => {

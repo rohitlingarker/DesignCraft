@@ -23,10 +23,8 @@ app.use(cors());
 app.use(session({
   secret: 'aqswdefrgthyjuikhygtfrdeswdefrgthy',
   resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 24 * 60 * 60 * 1000 // 1 day
-  }
+  saveUninitialized: true,
+  
 }));
 
 app.use('/', routes);
